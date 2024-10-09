@@ -48,3 +48,52 @@ uint8_t BitField::GetBit(size_t n) const {
 
 }
 
+void BitField::ClrBit(size_t n){
+    uint16_t mask = GetMask(n);
+    mask = ~mask;
+    _mem[GetMemIndex(n)] &= mask;
+} 
+
+BitField BitField::operator|(const BitField& tmp){
+    BitField result(tmp.GetLength());
+        for(size_t i = 0; i < _memSize; i++)
+            result._mem[i] = tmp._mem[i] | _mem[i];
+
+        return result;
+
+}
+
+BitField BitField::operator&(const BitField& tmp){
+    BitField result(*this);
+        for(size_t i = 0; i < _memSize; i++)
+            result._mem[i] &= tmp._mem[i];
+            
+        return result;
+}
+
+BitField BitField::operator^(const BitField& tmp){
+    BitField result(*this);
+        for(size_t i = 0; i < _memSize; i++)
+            result._mem[i] ^= tmp._mem[i];
+            
+        return result;
+}
+
+bool BitField::operator==(const BitField& tmp){
+    if (_sizeBit!= tmp._sizeBit)
+        return false;
+    for (size_t i = 0; i < _memSize; ++i){
+        if (_mem[i] != tmp._mem[i])
+            return false;
+    }
+    return true;
+}
+
+BitField BitField::operator~(){
+    BitField copy(*this);
+    for (size_t i = 0; i < _memSize; i++){
+        copy._mem[i] = ~copy._mem[i];
+    }
+    return copy;
+}
+
