@@ -1,5 +1,6 @@
 #include "BitField.h"
 
+
 BitField::BitField(size_t len) {
     _sizeBit = len;
     _memSize = (len / (8 * sizeof(uint16_t))) + (len % (8 * sizeof(uint16_t)) != 0);
@@ -42,10 +43,13 @@ size_t BitField::GetMemIndex(size_t n) const {
     if (n >= _sizeBit)
         throw "Bit out of range!";
     size_t index = n / (8 * sizeof(uint16_t));
+    return index;
 }
 
 uint8_t BitField::GetBit(size_t n) const {
-
+    if (n >= _sizeBit)
+        throw "hggh";
+    return ((_mem[GetMemIndex(n)] & GetMask(n)) != 0);
 }
 
 void BitField::ClrBit(size_t n){

@@ -1,4 +1,5 @@
 #include <iostream>
+#pragma once
 
 class BitField {
 private:
@@ -13,7 +14,9 @@ public:
     BitField(const BitField& tmp);
     BitField& operator=(const BitField& tmp);
     
-    size_t GetLength() const; // Получить количество бит
+    size_t GetLength() const{ // Получить количество бит
+        return _sizeBit;
+    }
     void SetBit(size_t n);
     void ClrBit(size_t n); 
     uint8_t GetBit(size_t n) const; 
@@ -25,5 +28,7 @@ public:
     bool operator==(const BitField& tmp); 
     BitField operator~(); 
 
-    ~BitField(); 
+    ~BitField(){
+        delete [] _mem;
+    }
 };
