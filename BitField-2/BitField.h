@@ -1,5 +1,6 @@
-#include <iostream>
 #pragma once
+#include <iostream>
+#include <stdint.h>
 
 class BitField {
 private:
@@ -14,19 +15,17 @@ public:
     BitField(const BitField& tmp);
     BitField& operator=(const BitField& tmp);
     
-    size_t GetLength() const{ // Получить количество бит
-        return _sizeBit;
-    }
+    size_t GetLength() const;
     void SetBit(size_t n);
-    void ClrBit(size_t n); 
-    uint8_t GetBit(size_t n) const; 
+    void ClrBit(size_t n);
+    uint8_t GetBit(size_t n) const;
 
 
-    BitField operator|(const BitField& tmp); 
-    BitField operator&(const BitField& tmp); 
-    BitField operator^(const BitField& tmp); 
-    bool operator==(const BitField& tmp); 
-    BitField operator~(); 
+    BitField operator|(const BitField& tmp);
+    BitField operator&(const BitField& tmp);
+    BitField operator^(const BitField& tmp);
+    bool operator==(const BitField& tmp) const;
+    BitField operator~();
 
     ~BitField(){
         delete [] _mem;

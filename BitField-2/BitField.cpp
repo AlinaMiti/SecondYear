@@ -1,6 +1,5 @@
 #include "BitField.h"
 
-
 BitField::BitField(size_t len) {
     _sizeBit = len;
     _memSize = (len / (8 * sizeof(uint16_t))) + (len % (8 * sizeof(uint16_t)) != 0);
@@ -27,6 +26,10 @@ BitField& BitField::operator=(const BitField& tmp){
     for (size_t i = 0; i < _memSize; ++i)
         _mem[i] = tmp._mem[i];
     return *this;
+}
+
+size_t BitField::GetLength() const{
+    return _sizeBit;
 }
 
 uint16_t BitField::GetMask(size_t n) const {
@@ -83,7 +86,7 @@ BitField BitField::operator^(const BitField& tmp){
         return result;
 }
 
-bool BitField::operator==(const BitField& tmp){
+bool BitField::operator==(const BitField& tmp) const{
     if (_sizeBit!= tmp._sizeBit)
         return false;
     for (size_t i = 0; i < _memSize; ++i){
@@ -100,4 +103,3 @@ BitField BitField::operator~(){
     }
     return copy;
 }
-
