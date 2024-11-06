@@ -12,7 +12,9 @@ public:
     Set(const BitField& bf);
     operator BitField();  //static_cast
 
-    size_t GetMaxPower();
+    size_t GetMaxPower(){
+        return _maxPower;
+    }
     void InsertElem(uint64_t elem);
     void DeleteElem(uint64_t elem);
     bool IsMember(uint64_t elem); //есть ли он в множестве
