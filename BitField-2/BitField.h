@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <stdint.h>
+#include <cstring>
 
 class BitField {
 private:
@@ -26,6 +27,23 @@ public:
     BitField operator^(const BitField& tmp);
     bool operator==(const BitField& tmp) const;
     BitField operator~();
+
+    BitField operator>>(const size_t n)const;
+    BitField operator<<(const size_t n)const;
+
+    // friend std::ostream& operator<<(std::ostream& os, const BitField& set){
+    //         for (int i = 0; i < set._memSize; i++){
+    //             std::cout<<set.GetBit(i)<<" ";
+    //         //     if (set.GetBit(i) == 1){
+    //         //         std::cout<<i<<" ";
+    //         //     }
+    //         // }
+    //         // std::cout<<"\n";
+    //         return os;
+    //         }
+    //     };
+
+
 
     ~BitField(){
         delete [] _mem;
