@@ -8,6 +8,10 @@
         "atomic": "cpp",
         "bit": "cpp",
         "cctype": "cpp",
+<<<<<<< HEAD
+=======
+        "charconv": "cpp",
+>>>>>>> 46a765c7e1ee3143b9a3c7d2085c2f2648c0612c
         "chrono": "cpp",
         "clocale": "cpp",
         "cmath": "cpp",
@@ -47,6 +51,10 @@
         "system_error": "cpp",
         "tuple": "cpp",
         "utility": "cpp",
+<<<<<<< HEAD
+=======
+        "format": "cpp",
+>>>>>>> 46a765c7e1ee3143b9a3c7d2085c2f2648c0612c
         "fstream": "cpp",
         "initializer_list": "cpp",
         "iomanip": "cpp",
@@ -64,7 +72,10 @@
         "stop_token": "cpp",
         "streambuf": "cpp",
         "thread": "cpp",
+<<<<<<< HEAD
         "cinttypes": "cpp",
+=======
+>>>>>>> 46a765c7e1ee3143b9a3c7d2085c2f2648c0612c
         "typeinfo": "cpp",
         "variant": "cpp"
     }

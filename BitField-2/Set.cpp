@@ -110,4 +110,3 @@ Set Set::operator*(const Set& tmp){
 Set Set::operator~(){
     return Set(~_bitField);
 }
-

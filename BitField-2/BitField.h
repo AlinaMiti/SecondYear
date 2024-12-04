@@ -28,8 +28,8 @@ public:
     bool operator==(const BitField& tmp) const;
     BitField operator~();
 
-    BitField operator>>(size_t n)const;
-    BitField operator<<(size_t n)const;
+    BitField operator>>(const size_t n)const;
+    BitField operator<<(const size_t n)const;
 
     // friend std::ostream& operator<<(std::ostream& os, const BitField& set){
     //         for (int i = 0; i < set._memSize; i++){

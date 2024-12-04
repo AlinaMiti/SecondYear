@@ -1,11 +1,28 @@
 #include "BitField.h"
 
 
+// BitField::BitField(size_t len) : _sizeBit(len) {
+//     //_memSize = (len + (sizeof(uint16_t) * 8 - 1)) / (sizeof(uint16_t) * 8);
+//         _memSize = (len + (sizeof(uint16_t) * 8 - 1)) / (sizeof(uint16_t) * 8); //Исправленное вычисление memsize
+//         _mem = new uint16_t[_memSize](); //Инициализация памяти нулями
+        
+//     }
+
+
+// BitField::BitField(size_t len) : _sizeBit(len){
+//     //_sizeBit = len;
+//     //_memSize = (len / (8 * sizeof(uint16_t))) + (len % (8 * sizeof(uint16_t)) != 0);
+//     _memSize = (len + (sizeof(uint16_t) * 8 - 1)) / (sizeof(uint16_t) * 8);
+//     _mem = new uint16_t[_memSize];
+//     for (size_t i = 0; i < _memSize; ++i)
+//         _mem[i] = 0;
+// }
+
 BitField::BitField(size_t len) {
     _sizeBit = len;
     _memSize = (len / (8 * sizeof(uint16_t))) + (len % (8 * sizeof(uint16_t)) != 0);
     _mem = new uint16_t[_memSize];
-    //std::memset(_mem,0, _memSize);
+    // std::memset(_mem,0, _memSize);
     for (size_t i = 0; i < _memSize; ++i)
         _mem[i] = 0;
 }
@@ -49,7 +66,7 @@ size_t BitField::GetMemIndex(size_t n) const {
     if (n >= _sizeBit)
         throw "Bit out of range!";
     
-    return n/(8 * sizeof(uint16_t));
+    return n/(sizeof(uint16_t) * 8);
 }
 
 uint8_t BitField::GetBit(size_t n) const {
